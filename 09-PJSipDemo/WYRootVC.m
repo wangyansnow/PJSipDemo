@@ -32,6 +32,7 @@
     NSLog(@"n.userInfo = %@", n.userInfo);
     
     if ([n.userInfo[@"statusCode"] integerValue] == 200) {
+        if (self.navigationController.viewControllers.count > 1) return;
         [self.navigationController pushViewController:[WYCallVC new] animated:YES];
     }
 }

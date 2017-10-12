@@ -48,6 +48,11 @@
     [PJSipManager sipCall:self.callField.text];
 }
 
+- (IBAction)updateRegistration {
+    [PJSipManager sipUpdateRegistration];
+}
+
+
 #pragma mark - PJSipDelegate
 
 - (void)onCallStateCalling {

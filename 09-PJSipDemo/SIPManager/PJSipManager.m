@@ -10,7 +10,7 @@
 #import <pjsua-lib/pjsua.h>
 #import <UIKit/UIKit.h>
 
-//#define DEBUG
+#define DEBUG
 
 NSString *const SipRegStateChanged = @"SipRegStateChanged";
 NSString *const SipOnInComingCall  = @"SipOnInComingCall";
@@ -66,7 +66,17 @@ static PJSipManager *_manager;
     [self performSelector:@selector(answer) onThread:[[self sharedManager] sipThread] withObject:nil waitUntilDone:NO modes:@[NSRunLoopCommonModes]];
 }
 
++ (void)sipUpdateRegistration {
+    [self performSelector:@selector(updateRegistration) onThread:[[self sharedManager] sipThread] withObject:nil waitUntilDone:NO modes:@[NSRunLoopCommonModes]];
+}
+
 #pragma mark - SIP Method
++ (void)updateRegistration {
+    if (_manager.accId == -1) return;
+    // 0 will start unregistration process
+    pjsua_acc_set_registration(_manager.accId, 1);
+}
+
 + (void)answer {
     pj_str_t reason = pj_str("ok let us say");
     pjsua_call_answer(_manager.callId, 200, &reason, NULL);
@@ -219,6 +229,7 @@ static PJSipManager *_manager;
 }
 
 - (void)sipThreadStart:(NSThread *)thread {
+    [[NSRunLoop currentRunLoop] addPort:[NSPort port] forMode:NSDefaultRunLoopMode];
     CFRunLoopRun();
 }
 
@@ -257,7 +268,10 @@ void on_reg_state(pjsua_acc_id acc_id) {
         NSMutableString *strM = [[uri componentsSeparatedByString:@"@"].lastObject mutableCopy];
         [strM deleteCharactersInRange:NSMakeRange(strM.length - 1, 1)];
         manager.server = strM;
-        NSLog(@"server = %@", strM);
+        // PJ_LOG(2, (__FILE__, "current value is %d", value));
+        printf("strM = %s\n", strM.UTF8String);
+        printf("onlineStatus = %s\n", accInfo.online_status_text.ptr);
+        printf("registration status = %s\n", accInfo.status_text.ptr);
     }
     
     dispatch_async(dispatch_get_main_queue(), ^{

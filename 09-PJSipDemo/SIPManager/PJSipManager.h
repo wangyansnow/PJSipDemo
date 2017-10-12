@@ -33,5 +33,6 @@ extern NSString *const SipOnInComingCall;
 + (void)sipCall:(NSString *)phoneNum;
 + (void)sipHangup;
 + (void)sipAnswer;
++ (void)sipUpdateRegistration;
 
 @end

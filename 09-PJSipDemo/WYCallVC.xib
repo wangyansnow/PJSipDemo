@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13189.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13165.3"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WYCallVC">
+            <connections>
+                <outlet property="callField" destination="GfK-dI-mtW" id="UZF-4f-aCn"/>
+                <outlet property="stackView" destination="CsQ-Cg-KKx" id="mGy-cb-w3Z"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GfK-dI-mtW">
+                    <rect key="frame" x="92" y="79.5" width="263" height="30"/>
+                    <nil key="textColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                </textField>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="号码：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uhc-1F-eMK">
+                    <rect key="frame" x="20" y="84" width="52" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K7p-TO-5yR">
+                    <rect key="frame" x="40" y="150" width="295" height="40"/>
+                    <color key="backgroundColor" red="0.88022612305702697" green="0.94314703349995854" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="Hez-H1-49N"/>
+                    </constraints>
+                    <state key="normal" title="呼叫">
+                        <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="20"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="callBtnClick" destination="-1" eventType="touchUpInside" id="Pe2-Gb-Wwp"/>
+                    </connections>
+                </button>
+                <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="CsQ-Cg-KKx">
+                    <rect key="frame" x="20" y="230" width="335" height="40"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kg3-hg-3uv">
+                            <rect key="frame" x="0.0" y="0.0" width="157.5" height="40"/>
+                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <state key="normal" title="挂断"/>
+                            <connections>
+                                <action selector="hangupBtnClick" destination="-1" eventType="touchUpInside" id="A2w-Xo-u5N"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lkm-Vi-SD5">
+                            <rect key="frame" x="177.5" y="0.0" width="157.5" height="40"/>
+                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <state key="normal" title="接听"/>
+                            <connections>
+                                <action selector="answerBtnClick" destination="-1" eventType="touchUpInside" id="059-6q-Pdg"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="H4a-bY-tnV"/>
+                    </constraints>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="GfK-dI-mtW" firstAttribute="centerY" secondItem="Uhc-1F-eMK" secondAttribute="centerY" id="027-MS-6Mj"/>
+                <constraint firstItem="GfK-dI-mtW" firstAttribute="leading" secondItem="Uhc-1F-eMK" secondAttribute="trailing" constant="20" id="2Lc-L8-5NA"/>
+                <constraint firstItem="Uhc-1F-eMK" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="84" id="6W8-Nm-Rw5"/>
+                <constraint firstItem="Uhc-1F-eMK" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="B7a-xn-jSy"/>
+                <constraint firstAttribute="trailing" secondItem="K7p-TO-5yR" secondAttribute="trailing" constant="40" id="LOV-v6-h2g"/>
+                <constraint firstAttribute="trailing" secondItem="GfK-dI-mtW" secondAttribute="trailing" constant="20" id="N5t-yc-HQa"/>
+                <constraint firstItem="K7p-TO-5yR" firstAttribute="top" secondItem="GfK-dI-mtW" secondAttribute="bottom" constant="40" id="Xnq-gF-jyv"/>
+                <constraint firstItem="K7p-TO-5yR" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="40" id="dVV-Hf-DGm"/>
+                <constraint firstItem="CsQ-Cg-KKx" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="l88-XM-QKC"/>
+                <constraint firstItem="CsQ-Cg-KKx" firstAttribute="top" secondItem="K7p-TO-5yR" secondAttribute="bottom" constant="40" id="nxI-7o-s9Y"/>
+                <constraint firstAttribute="trailing" secondItem="CsQ-Cg-KKx" secondAttribute="trailing" constant="20" id="txt-5y-cTg"/>
+            </constraints>
+        </view>
+    </objects>
+</document>
